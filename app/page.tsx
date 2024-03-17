@@ -17,7 +17,6 @@ export default async function Home() {
   const data = await upcoming
   return (
     <>
-      <Navbar />
       <Banner data={data.results} />
       <TitleContainer
         title="Popular Movies"

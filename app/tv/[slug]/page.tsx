@@ -10,6 +10,16 @@ import React from 'react'
 import SimilarShows from '@/components/details/SimilarShows'
 import TVVideoContainer from '@/components/details/TVVideoContainer'
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const id = params.slug
+    const getSingleTV: Promise<TVData> = GetSingleTV(id)
+    const singleTV = await getSingleTV
+    return {
+        title: `Animax | ${singleTV.name}`,
+        description: singleTV.overview
+    }
+}
+
 export default async function SingleTV({ params }: { params: { slug: string } }) {
     const id = params.slug
     const getSingleTV: Promise<TVData> = GetSingleTV(id)
@@ -22,7 +32,7 @@ export default async function SingleTV({ params }: { params: { slug: string } })
                     <TitleContainer>
                         {/* heading */}
                         <h1 className='text-4xl md:text-5xl font-semibold'>{singleTV.name}</h1>
-                        <GenreContainer data={singleTV.genres!} />
+                        <GenreContainer data={singleTV.genres} />
                         {/* description */}
                         <p className='text-xs md:text-sm'>{singleTV.overview}</p>
                         <TVCastCarousel id={id} />

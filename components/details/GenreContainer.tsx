@@ -4,7 +4,7 @@ type Props = {
     data: {
         id: number,
         name: string,
-    }[]
+    }[] | undefined
 }
 
 export default function GenreContainer({ data }: Props) {

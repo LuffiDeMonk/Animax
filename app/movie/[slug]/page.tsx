@@ -10,6 +10,18 @@ import CastCarousel from '@/components/details/CastCarousel'
 import SimilarMovies from '@/components/details/SimilarMovies'
 import VideoContainer from '@/components/details/VideoContainer'
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const slug = params.slug
+    const getSingleMovie: Promise<MovieData> = GetSingleMovie(slug)
+    const singleMovie = await getSingleMovie
+
+    return {
+        title: `Animax | ${singleMovie.title}`,
+        description: singleMovie.overview
+    }
+
+}
+
 export default async function MovieDetails({ params }: { params: { slug: string } }) {
     const slug = params.slug
     const getSingleMovie: Promise<MovieData> = GetSingleMovie(slug)
@@ -22,7 +34,7 @@ export default async function MovieDetails({ params }: { params: { slug: string 
                     <TitleContainer>
                         {/* heading */}
                         <h1 className='text-4xl md:text-5xl font-semibold'>{singleMovie.title}</h1>
-                        <GenreContainer data={singleMovie.genres!} />
+                        <GenreContainer data={singleMovie.genres} />
                         {/* description */}
                         <p className='text-xs md:text-sm'>{singleMovie.overview}</p>
                         {/* <CastCarousel /> */}
