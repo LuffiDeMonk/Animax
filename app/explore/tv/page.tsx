@@ -1,7 +1,10 @@
+import Banner from '@/components/explore/Banner'
 import React from 'react'
 
-export default function page() {
+export default function ExploreTV() {
     return (
-        <div>page</div>
+        <>
+            <Banner />
+        </>
     )
 }
