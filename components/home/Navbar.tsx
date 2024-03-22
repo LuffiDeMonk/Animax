@@ -2,6 +2,8 @@ import React from 'react'
 import Container from './Container'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Button } from '../ui/button'
+import { signOut } from '@/auth'
 
 export default function Navbar() {
     return (
@@ -14,6 +16,14 @@ export default function Navbar() {
                         </div>
                     </Link>
                 </div>
+                <form
+                    action={async () => {
+                        'use server'
+                        await signOut()
+                    }}
+                >
+                    <Button>Log out</Button>
+                </form>
             </Container>
         </nav>
     )

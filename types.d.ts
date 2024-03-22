@@ -64,3 +64,8 @@ type MovieVideos = {
     published_at: string,
     id: string
 }
+
+interface FormErrorStatus {
+    type: string,
+    message: string
+}
