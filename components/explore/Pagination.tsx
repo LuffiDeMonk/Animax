@@ -37,7 +37,7 @@ export default function Pagination({ currentPage, totalPages, size }: Props) {
         } else {
             params.delete('page')
         }
-        replace(`${pathname}?${params.toString()}`, { scroll: false })
+        replace(`${pathname}?${params.toString()}`)
     }
 
     const handleNext = () => {
@@ -52,7 +52,7 @@ export default function Pagination({ currentPage, totalPages, size }: Props) {
         } else {
             params.delete('page')
         }
-        replace(`${pathname}?${params.toString()}`, { scroll: false })
+        replace(`${pathname}?${params.toString()}`)
     }
     const handlePrev = () => {
         CurrentPage--
@@ -67,17 +67,17 @@ export default function Pagination({ currentPage, totalPages, size }: Props) {
         } else {
             params.delete('page')
         }
-        replace(`${pathname}?${params.toString()}`, { scroll: false })
+        replace(`${pathname}?${params.toString()}`)
     }
 
     return (
-        <div className='flex flex-wrap gap-6 my-12 justify-center items-center'>
+        <div className='flex flex-wrap gap-2 my-12 justify-center items-center'>
             {CurrentPage !== 1 && <Button size='icon' variant='ghost' onClick={handlePrev}>
                 <ChevronLeft />
             </Button>}
             {
                 paginationArray.map(page => {
-                    if (page < maxPageNumberLimit + 1 && page > minPageNumberLimit - 1) {
+                    if (page <= maxPageNumberLimit && page > minPageNumberLimit - 1) {
                         return (
                             <div
                                 key={page}

@@ -18,7 +18,7 @@ export default function AnimatedHeading() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: 'easeInOut' }}
                     viewport={{
-                        once: true
+                        once: true,
                     }}
                 >{pathname.split('/')[2]}</motion.p>
             </div>

@@ -3,7 +3,9 @@ import { Inter } from "next/font/google";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ['200', '400', '600', '800'] });
+const poppins = Poppins({ subsets: ["devanagari"], weight: ['200', '400', '600', '800'] });
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Animax | Home",

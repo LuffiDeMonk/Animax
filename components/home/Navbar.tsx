@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import Container from './Container'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,8 +8,12 @@ import { Button } from '../ui/button'
 import { signOut } from '@/auth'
 
 export default function Navbar() {
+    const [background, setBackground] = useState(false)
+    const [hide, setHide] = useState(false)
+    const { scrollY } = useScroll()
     return (
-        <nav className='fixed top-0 z-50 w-full '>
+        <motion.nav
+            className='fixed top-0 z-50 w-full '>
             <Container className='py-4 flex items-center justify-between'>
                 <div className="flex items-center gap-1">
                     <Link href='/'>
@@ -16,15 +22,15 @@ export default function Navbar() {
                         </div>
                     </Link>
                 </div>
-                <form
+                {/* <form
                     action={async () => {
                         'use server'
                         await signOut()
                     }}
                 >
                     <Button>Log out</Button>
-                </form>
+                </form> */}
             </Container>
-        </nav>
+        </motion.nav>
     )
 }
